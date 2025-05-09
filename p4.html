@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produits Hair Care</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/p4.css"/>
+</head>
+<body>
+  
+
+  <div class="section">
+    <div class="newsletter">
+      <h2>Nos Meilleures Ventes Capillaires</h2>
+    </div>
+
+    <div class="products">
+      <div class="product">
+        <img src="../image/m1.jpg" alt="Shampooing">
+        <h3>Shampooing Or Pur</h3>
+        <p>Nettoyage en profondeur avec une touche de luxe.</p>
+        <button class="btn" onclick="togglePrice(this, '250 DA')">Découvrez</button>
+        <div class="price-box"></div>
+        <button class="order-btn">Commander</button>
+      </div>
+      <div class="product">
+        <img src="../image/m2.jpg" alt="Masque">
+        <h3>Masque Réparateur</h3>
+        <p>Répare les cheveux secs et abîmés.</p>
+        <button class="btn" onclick="togglePrice(this, '300 DA')">Découvrez</button>
+        <div class="price-box"></div>
+        <button class="order-btn">Commander</button>
+      </div>
+      <div class="product">
+        <img src="../image/m3.jpg" alt="Huile">
+        <h3>Huile Sublimante</h3>
+        <p>Brillance et nutrition intense.</p>
+        <button class="btn" onclick="togglePrice(this, '400 DA')">Découvrez</button>
+        <div class="price-box"></div>
+        <button class="order-btn">Commander</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function togglePrice(button, price) {
+      const product = button.closest('.product');
+      const priceBox = product.querySelector('.price-box');
+      const orderBtn = product.querySelector('.order-btn');
+      product.classList.toggle('show-price');
+      const isShown = product.classList.contains('show-price');
+      priceBox.textContent = isShown ? `Prix: ${price}` : '';
+      orderBtn.style.display = isShown ? 'inline-block' : 'none';
+    }
+  </script>
+</body>
+</html>
+

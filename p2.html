@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nos Produits Body Care</title>
+  <link rel="stylesheet" href="../css/p2.css" />
+</head>
+<body>
+  <header>
+    <h1 class="titre-page">Collection Body Care</h1>
+
+  </header>
+
+  <section class="produits">
+    <div class="produit">
+      <div class="contenu-produit">
+        <img src="../image/l1.jpg" alt="Lotion hydratante" />
+        <h2>Lotion Hydratante</h2>
+        <p>Hydrate en profondeur avec une texture <br> légère  et soyeuse.</p>
+        <button class="toggle-prix">+</button>
+      </div>
+      <div class="prix-carte">
+        <span class="prix">19,99 €</span>
+        <button class="ajouter-panier">🛒</button>
+      </div>
+    </div>
+     <!-- المنتج 2 -->
+  <div class="produit">
+    <div class="contenu-produit">
+      <img src="../image/l2.jpg" alt="Gommage corporel" />
+      <h2>Gommage Corporel</h2>
+      <p>Élimine les cellules mortes pour une peau <br> douce et éclatante.</p>
+      <button class="toggle-prix">+</button>
+    </div>
+    <div class="prix-carte">
+      <span class="prix">14,50 €</span>
+      <button class="ajouter-panier">🛒</button>
+    </div>
+  </div>
+
+  <!-- المنتج 3 -->
+  <div class="produit">
+    <div class="contenu-produit">
+      <img src="../image/l3.jpg" alt="Huile corporelle" />
+      <h2>Huile Corporelle</h2>
+      <p>Nourrit intensément la peau et laisse un fini satiné.</p>
+      <button class="toggle-prix">+</button>
+    </div>
+    <div class="prix-carte">
+      <span class="prix">22,00 €</span>
+      <button class="ajouter-panier">🛒</button>
+    </div>
+  </div>
+
+  <!-- المنتج 4 -->
+  <div class="produit">
+    <div class="contenu-produit">
+      <img src="../image/l4.jpg" alt="Crème réparatrice" />
+      <h2>Crème Réparatrice</h2>
+      <p>Répare les zones sèches et apaise les irritations cutanées.</p>
+      <button class="toggle-prix">+</button>
+    </div>
+    <div class="prix-carte">
+      <span class="prix">17,80 €</span>
+      <button class="ajouter-panier">🛒</button>
+    </div>
+  </div>
+  </section>
+
+  <script>
+    // JavaScript بسيط لجعل الزر "+" يظهر/يخفي السعر
+    document.querySelectorAll('.toggle-prix').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const carte = btn.closest('.produit').querySelector('.prix-carte');
+        carte.classList.toggle('visible');
+      });
+    });
+  </script>
+</body>
+</html>
+

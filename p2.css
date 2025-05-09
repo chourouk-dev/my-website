@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #fdfaf6;
+    color: #4a3e36;
+  }
+  
+  header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #e8d8c3;
+  }
+  
+  .titre-page {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 2rem auto;
+    color: #5a5a5a;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .titre-page::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(to right, #d8bfd8, #f0e6f6);
+    border-radius: 2px;
+    transform: translateX(-50%);
+  }
+  
+  .produits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .produit {
+    position: relative;
+    background: linear-gradient(145deg, #f4e4e1, #e8d8c3);
+    width: 330px;
+    height: 340px; 
+    padding: 2rem;
+    border-radius: 40% 60% 60% 40% / 50% 30% 70% 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    overflow: visible;
+  }
+  
+  .produit:hover {
+    transform: translateY(-5px);
+  }
+  
+  .contenu-produit img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 1rem; /* وسط الصورة وتباعد أنيق */
+    border-radius: 40% 60% 60% 40% / 50% 30% 70% 50%;
+  }
+  
+  
+  
+  
+  .contenu-produit h2 {
+    font-size: 1.4rem;
+    margin: 1rem 0 0.5rem;
+    color: #5e4b3c;
+  }
+  
+  .contenu-produit p {
+    font-size: 1rem;
+    color: #7b6554;
+  }
+  
+  .toggle-prix {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #d1b8a1;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #4a3e36;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .prix-carte {
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    right: 0;
+    background: #fdf2ed;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e5cfc0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: bottom 0.4s ease;
+    opacity: 0;
+  }
+  
+  .prix-carte.visible {
+    bottom: 0;
+    opacity: 1;
+  }
+  
+  .prix {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #6d4c41;
+  }
+  
+  .ajouter-panier {
+    background: #b77e64;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: white;
+    transition: background 0.3s;
+  }
+  
+  .ajouter-panier:hover {
+    background: #9e6550;
+  }
+  
+  
+  
+  
+  
+  
+  
+

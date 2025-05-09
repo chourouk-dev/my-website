@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chercher des produits</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 50px;
+      text-align: center;
+    }
+
+    #search {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 80%;
+      margin-bottom: 20px;
+    }
+
+    .product {
+      display: none;
+     
+      margin: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: white;
+      width: 350px;
+    }
+
+    .product img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .product p {
+      color: #d68e52;
+      font-weight: bold;
+    }
+
+    .available {
+      color: green;
+    }
+
+    .unavailable {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cherchez le produit que vous souhaitez</h1>
+  <input type="text" id="search" placeholder="Chercher un produit..." onkeyup="searchProduct()">
+
+  <div class="product" data-name="Crème Hydratante Corps" data-available="true">
+    <img src="../image/e5.jpg" alt="Crème Hydratante Corps">
+    <h3>Crème Hydratante Corps</h3>
+    <p>25.00€</p>
+    <p class="status">Disponible</p>
+  </div>
+
+  <div class="product" data-name="Sérum Anti-Age" data-available="true">
+    <img src="../image/e1.jpg" alt="Sérum Anti-Age">
+    <h3>Sérum Anti-Age</h3>
+    <p>30.00€</p>
+    <p class="status">Disponible</p>
+  </div>
+
+  <div class="product" data-name="Masque Capillaire Nourrissant" data-available="false">
+    <img src="../image/e6.jpg" alt="Masque Capillaire Nourrissant">
+    <h3>Masque Capillaire Nourrissant</h3>
+    <p>18.00€</p>
+    <p class="status">Indisponible</p>
+  </div>
+
+  <div class="product" data-name="Lotion Tonique Visage" data-available="true">
+    <img src="../image/e4.jpg" alt="Lotion Tonique Visage">
+    <h3>Lotion Tonique Visage</h3>
+    <p>12.50€</p>
+    <p class="status">Disponible</p>
+  </div>
+
+  <script>
+    function searchProduct() {
+      const query = document.getElementById('search').value.toLowerCase();
+      const products = document.querySelectorAll('.product');
+      
+      products.forEach(product => {
+        const name = product.getAttribute('data-name').toLowerCase();
+        const available = product.getAttribute('data-available');
+
+        if (name.includes(query)) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+
+        // Mise à jour de l'état de disponibilité
+        const status = product.querySelector('.status');
+        if (available === 'true') {
+          status.classList.add('available');
+          status.classList.remove('unavailable');
+        } else {
+          status.classList.add('unavailable');
+          status.classList.remove('available');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

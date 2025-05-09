@@ -1,0 +1,151 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+
+/* General styles for the whole page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: #e18048;
+    padding: 10px;
+    text-align: center;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 0 15px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.product {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+}
+
+.product h4 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.remove-btn {
+    background-color: #e18048;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.remove-btn:hover {
+    background-color: #d68e52;
+}
+
+/* Empty cart message */
+.cart-grid p {
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+}
+
+
+
+
+    </style>
+    <header>
+        <a href="index.html"><i class="lnr lnr-home"></i></a>
+        <a href="cart.html"><i class="lnr lnr-cart"></i></a>
+    </header>
+
+    <main>
+        <h1>Votre Panier</h1>
+        <div id="cartGrid" class="cart-grid"></div>
+    </main>
+
+    <script>
+        // Fonction pour afficher les produits du panier
+        function showCart() {
+            const cartGrid = document.getElementById('cartGrid');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cart.length === 0) {
+                cartGrid.innerHTML = '<p>Votre panier est vide.</p>';
+            } else {
+                cartGrid.innerHTML = '';  // Vider le panier avant de réafficher les produits
+                cart.forEach((product, index) => {
+                    const productDiv = document.createElement('div');
+                    productDiv.className = 'product';
+                    productDiv.innerHTML = `
+                        <h4>${product.name}</h4>
+                        <div class="price">${product.price}</div>
+                        <button class="remove-btn" onclick='removeFromCart(${index})'>Supprimer</button>
+                    `;
+                    cartGrid.appendChild(productDiv);
+                });
+            }
+        }
+
+        // Fonction pour supprimer un produit du panier
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Retirer le produit à l'index donné
+            localStorage.setItem('cart', JSON.stringify(cart)); // Sauvegarder le panier mis à jour
+            showCart(); // Réafficher le panier après la suppression
+        }
+
+        // Appeler la fonction pour afficher les produits du panier au chargement de la page
+        showCart();
+    </script>
+</body>
+</html>

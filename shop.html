@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beauty Store</title>
+  <link rel="stylesheet" href="../css/shop.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Catégories</h2>
+    <div class="category">
+      <div class="category-header" onclick="showProducts('skin')">
+        <span>Skin Care </span><span>+</span>
+      </div>
+    </div>
+    <div class="category">
+      <div class="category-header" onclick="showProducts('hair')">
+        <span>Hair Care </span><span>+</span>
+      </div>
+    </div>
+    <div class="category">
+      <div class="category-header" onclick="showProducts('body')">
+        <span>Body Care </span><span>+</span>
+      </div>
+    </div>
+    <div class="category">
+      <div class="category-header" onclick="showProducts('accessories')">
+        <span>Accessories Skin Care </span><span>+</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <h2 id="mainTitle">Tous les Produits</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- produits affichés ici -->
+    </div>
+  </main>
+
+  <script>
+    const products = {
+      skin: [
+        { name: "Hydrating Cream", img: "../image/e13.jpg", rating: 4, price: "$15.00" },
+        { name: "Vitamin C Serum", img: "../image/e3.jpg", rating: 5, price: "$25.00" },
+        { name: "Sérum Anti-Age", img: "../image/e1.jpg", rating: 4, price: "$15.00" },
+        { name: "Crème Énergie Matin", img: "../image/e11.jpg", rating: 4, price: "$18.00" },
+        { name: "Gel Rafraîchissant", img: "../image/e2.jpg", rating: 3, price: "$20.00" },
+        { name: "Crème Circulation Active", img: "../image/e7.jpg", rating: 4, price: "$15.00" }
+      ],
+      hair: [
+        { name: "Hair Repair Serum", img: "../image/m1.jpg", rating: 4, price: "$22.00" },
+        { name: "Scalp Nutrition Oil", img: "../image/e15.jpg", rating: 5, price: "$19.00" },
+        { name: "Volume Boost Shampoo", img: "../image/e14.jpg", rating: 4, price: "$17.00" }
+      ],
+      body: [
+        { name: "Soft Touch Lotion", img: "../image/l1.jpg", rating: 4, price: "$14.00" },
+        { name: "Hydra Body Cream", img: "../image/l4.jpg", rating: 3, price: "$16.00" },
+        { name: "Exfoliating Scrub", img: "../image/t5.jpg", rating: 4, price: "$12.00" },
+        { name: "Silky Body Butter", img: "../image/t6.jpg", rating: 5, price: "$20.00" }
+      ],
+      accessories: [
+        { name: "Facial Roller", img: "../image/t2.jpg", rating: 4, price: "$10.00" },
+        { name: "Scalp Massager", img: "../image/t3.jpg", rating: 5, price: "$9.00" }
+      ]
+    };
+  
+    function showProducts(category) {
+  const grid = document.getElementById('productGrid');
+  const title = document.getElementById('mainTitle');
+  grid.innerHTML = '';
+  title.textContent = categoryName(category);
+  products[category].forEach(p => {
+    const product = document.createElement('div');
+    product.className = 'product';
+    product.innerHTML = `
+      <img src="${p.img}" alt="${p.name}">
+      <h4>${p.name}</h4>
+      <div class="stars">${'★'.repeat(p.rating)}${'☆'.repeat(5 - p.rating)}</div>
+      <div class="price-cart">
+        <span class="price">${p.price}</span>
+        <button class="cart-btn" onclick='addToCart(${JSON.stringify(p)})'>🛒</button>
+      </div>
+    `;
+    grid.appendChild(product);
+  });
+}
+
+  
+    function categoryName(key) {
+      switch(key) {
+        case 'skin': return 'Produits Skin Care';
+        case 'hair': return 'Produits Hair Care';
+        case 'body': return 'Produits Body Care';
+        case 'accessories': return 'Accessoires Skin Care';
+        default: return 'Tous les Produits';
+      }
+    }
+  
+    function addToCart(product) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push(product);
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+  </script>
+  
+  
+  
+</body>
+</html>
+
